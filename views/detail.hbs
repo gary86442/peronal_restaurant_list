@@ -4,16 +4,19 @@
     <div class="col-12 col-md-10 mx-auto">
       <div class="icon d-flex justify-content-end mb-4">
         <a href="/restaurants/{{restaurant._id}}/edit" class="text-secondary">
-          <i class="fa-solid fa-pen-to-square fa-2xl"></i>
+          <i class="btn fa-solid fa-pen-to-square fa-2xl"></i>
         </a>
-        <form
-          class="ms-3"
-          action="/restaurants/{{restaurant._id}}/delete?_method=DELETE"
-          method="post"
-          style="display: inline;"
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn deleBTN"
+          data-bs-toggle="modal"
+          data-bs-target="#deleModal"
+          data-name="{{restaurant.name}}"
+          data-id="{{restaurant._id}}"
         >
           <i class="fa-solid fa-trash fa-2xl"></i>
-        </form>
+        </button>
       </div>
 
       <p class="mb-1">
@@ -53,10 +56,46 @@
 
       <img
         class="rounded mx-auto d-block mb-4 w-100"
-        src={{restaurant.image}}
-        alt={{restaurant.name}}
+        src="{{restaurant.image}}"
+        alt="{{restaurant.name}}"
         style="max-width: 600px;"
       />
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleModal"
+  tabindex="-1"
+  aria-labelledby="deleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleModalLabel">確認刪除?</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Close</button>
+        <form
+          action="/restaurants/{{this._id}}?_method=DELETE"
+          method="post"
+          style="display: inline;"
+        >
+          <button type="button" class="btn btn-danger">刪除</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

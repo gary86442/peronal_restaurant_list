@@ -16,6 +16,16 @@ router.post("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//* 處理餐廳詳細頁
+router.get("/:id", (req, res) => {
+  const _id = req.params.id;
+  restaurantDB
+    .findById(_id)
+    .lean()
+    .then((restaurant) => res.render("detail", { restaurant }))
+    .catch((err) => console.log(err));
+});
+
 //* 處理餐廳編輯頁面
 router.get("/:id/edit", (req, res) => {
   const _id = req.params.id;
@@ -35,13 +45,13 @@ router.put("/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-//* 處理餐廳詳細頁
-router.get("/:id", (req, res) => {
+//* 處理餐廳刪除
+router.delete("/:id", (req, res) => {
   const _id = req.params.id;
   restaurantDB
-    .findById(_id)
-    .lean()
-    .then((restaurant) => res.render("detail", { restaurant }))
+    .findByIdAndDelete(_id)
+    .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
+
 module.exports = router;
