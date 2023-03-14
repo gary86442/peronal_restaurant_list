@@ -1,10 +1,10 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const router = require("./routes");
-
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+require("./config/mongoose");
 const PORT = process.env.PORT;
 const app = express();
 
