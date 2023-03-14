@@ -81,6 +81,18 @@ a {
   font-size: 0.8rem;
 }
 
+.fa-circle-info {
+  color: rgb(0, 47, 255);
+}
+
+.fa-pen-to-square {
+  color: #228b22;
+}
+
+.fa-trash {
+  color: #dc143c;
+}
+
 .restaurant-show-title {
   position: relative;
   top: -100px;

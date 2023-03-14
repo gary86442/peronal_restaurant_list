@@ -2,6 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
+      <div class="icon d-flex justify-content-end mb-4">
+        <a href="/restaurants/{{restaurant._id}}/edit" class="text-secondary">
+          <i class="fa-solid fa-pen-to-square fa-2xl"></i>
+        </a>
+        <form
+          class="ms-3"
+          action="/restaurants/{{restaurant._id}}/delete?_method=DELETE"
+          method="post"
+          style="display: inline;"
+        >
+          <i class="fa-solid fa-trash fa-2xl"></i>
+        </form>
+      </div>
 
       <p class="mb-1">
         <span class="text-secondary">
