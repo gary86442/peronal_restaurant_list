@@ -1,0 +1,95 @@
+<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
+<div class="container bg-secondary text-dark bg-opacity-50">
+  <form action="/restaurants" method="post">
+    <div class="mb-3">
+      <label for="restaurantName" class="form-label mt-1">餐廳名稱：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantName"
+        name="name"
+        required
+        placeholder="餐廳名稱為必填項目"
+      />
+
+      <label
+        for="restaurantEngName"
+        class="form-label mt-3"
+      >餐廳英文名稱：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantEngName"
+        name="name_en"
+      />
+      <label for="restaurantCategory" class="form-label mt-3">餐廳分類：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantCategory"
+        name="category"
+        required
+      />
+      <label for="restaurantImage" class="form-label mt-3">餐廳照片：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantImage"
+        name="image"
+      />
+      <label for="restaurantLocation" class="form-label mt-3">地址：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantLocation"
+        name="location"
+      />
+      <label for="restaurantPhone" class="form-label mt-3">電話：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantPhone"
+        name="phone"
+      />
+      <label
+        for="restaurantGoogle_map"
+        class="form-label mt-3"
+      >Google_map：</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantGoogle_map"
+        name="google_map"
+        placeholder="請貼上Google map的位置連結"
+      />
+      <label for="restaurantRating" class="form-label mt-3">評分數：</label>
+      <input
+        type="number"
+        min="1"
+        max="5"
+        step="0.1"
+        class="form-control"
+        id="restaurantRating"
+        name="rating"
+        value="4"
+        required
+      />
+      <small>請輸入評分 1 ~ 5 分</small>
+      <div>
+        <label
+          for="restaurantDescription"
+          class="form-label mt-3"
+        >說明：</label>
+        <input
+          type="text"
+          class="form-control"
+          id="restaurantDescription"
+          name="description"
+          placeholder="請簡單描述餐廳"
+        />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+  </form>
+</div>
