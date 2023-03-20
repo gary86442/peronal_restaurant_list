@@ -1,6 +1,7 @@
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const userDB = require("../models/userDB");
+const bcrypt = require("bcryptjs");
 
 module.exports = (app) => {
   //* 初始化passport ， 將exp的session，和passport 連結。
@@ -16,10 +17,10 @@ module.exports = (app) => {
           if (!user) {
             return done(false, null, { message: "該帳號不存在" });
           }
-          if (user.password !== password) {
-            return done(false, null, { message: "帳號或密碼錯誤" });
-          }
-          return done(null, user);
+          bcrypt.compare(password, user.password).then((isMatched) => {
+            if (isMatched) return done(null, user);
+            return done(false, null, { message: "帳號或密碼錯誤！" });
+          });
         })
         .catch((err) => done(err, null));
     })
