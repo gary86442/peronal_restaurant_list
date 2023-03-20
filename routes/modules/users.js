@@ -23,6 +23,7 @@ router.get("/register", (req, res) => {
 });
 
 //* 註冊驗證
+//? 用FB的帳號所使用的信箱 就只能用FB登入了不能再用普通登入的吧
 router.post("/register", (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {

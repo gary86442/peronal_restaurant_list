@@ -3,6 +3,7 @@ const localStrategy = require("passport-local").Strategy;
 const facebookStrategy = require("passport-facebook").Strategy;
 const userDB = require("../models/userDB");
 const bcrypt = require("bcryptjs");
+const { randomPassword } = require("../app/randomPassword");
 
 module.exports = (app) => {
   //* 初始化passport ， 將exp的session，和passport 連結。
@@ -41,10 +42,10 @@ module.exports = (app) => {
         const { email, name } = profile._json;
         userDB.findOne({ email }).then((user) => {
           if (user) return done(null, user);
-          const randomPassword = Math.random().toString(36).slice(-8);
+          const password = randomPassword();
           bcrypt
             .genSalt(10)
-            .then((salt) => bcrypt.hash(randomPassword, salt))
+            .then((salt) => bcrypt.hash(password, salt))
             .then((hash) => {
               userDB
                 .create({ name, email, password: hash })

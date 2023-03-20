@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userDB = require("../../models/userDB");
 const passport = require("passport");
-const bcrypt = require("bcryptjs");
 
 router.get(
   "/facebook",
