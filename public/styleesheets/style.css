@@ -10,8 +10,7 @@ a {
 #create {
   color: white;
   background-color: #4592af;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
+  border-radius: 0.375rem;
 }
 .navbar .navbar-brand:hover {
   color: #226089;
