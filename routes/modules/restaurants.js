@@ -10,8 +10,9 @@ router.get("/create", (req, res) => {
 
 router.post("/", (req, res) => {
   const restaurant = req.body;
+  const userId = res.locals.user._id;
   restaurantDB
-    .create({ ...restaurant })
+    .create({ ...restaurant, userId })
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
