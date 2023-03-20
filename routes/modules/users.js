@@ -22,7 +22,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-// TODO 註冊驗證
+//* 註冊驗證
 router.post("/register", (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
