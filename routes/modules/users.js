@@ -25,26 +25,40 @@ router.get("/register", (req, res) => {
 // TODO 註冊驗證
 router.post("/register", (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
+  if (password !== confirmPassword) {
+    return res.render("register", {
+      name,
+      email,
+      errors: "密碼與確認密碼不相同！",
+    });
+  }
+
   userDB.findOne({ email }).then((user) => {
     if (user) {
-      console.log("該信箱已經註冊過了！");
-      return res.render("/register", { name, email });
+      return res.render("register", {
+        name,
+        email,
+        errors: "該信箱已經註冊過了！",
+      });
     }
   });
+  const userName = name ? name : email.split("@")[0];
   bcrypt
     .genSalt(10)
     .then((salt) => bcrypt.hash(password, salt))
-    .then((hash) => userDB.create({ name, password: hash, email }))
+    .then((hash) => userDB.create({ name: userName, password: hash, email }))
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
 
 //*  登出
 router.get("/logout", (req, res, next) => {
+  // console.log(req.flash("success_msg"));
   req.logout((err) => {
     if (err) return next(err);
+    req.flash("success_msg", "你已經成功登出。");
+    res.redirect("/users/login");
   });
-  res.redirect("/users/login");
 });
 
 module.exports = router;
