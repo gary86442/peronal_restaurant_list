@@ -11,6 +11,21 @@ router.get("/login", (req, res) => {
 //*  驗證登入
 router.post(
   "/login",
+  //! 登入錯誤的錯誤訊息提示 以以下操作代替教案會卡住，也沒有報錯
+  // (req, res, next) => {
+  //   passport.authenticate("local"),
+  //     (err, user, info) => {
+  //       if (err) return next(err);
+  //       if (!user) {
+  //         req.flash("errors", info.message);
+  //         return res.redirect("/users/login");
+  //       }
+  //       req.login(user, (err) => {
+  //         if (err) return next(err);
+  //         return res.redirect("/");
+  //       });
+  //     };
+  // }
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/users/login",

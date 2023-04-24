@@ -3,7 +3,6 @@ const router = express.Router();
 const restaurantDB = require("../../models/restaurantDB");
 
 //*處理新增餐廳：
-//TODO 新增餐廳的功能尚未關聯到使用者
 router.get("/create", (req, res) => {
   res.render("create");
 });

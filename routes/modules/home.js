@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const userDB = require("../../models/userDB");
-const restaurantDB = require("../../models/restaurantDB");
 
+const restaurantDB = require("../../models/restaurantDB");
 router.get("/", (req, res) => {
   const userId = res.locals.user._id;
   restaurantDB
@@ -11,4 +10,5 @@ router.get("/", (req, res) => {
     .sort({ _id: "asc" })
     .then((restaurants) => res.render("index", { restaurants }));
 });
+
 module.exports = router;

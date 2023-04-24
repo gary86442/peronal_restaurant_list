@@ -2,7 +2,8 @@
 <div class="container bg-secondary text-dark bg-opacity-50">
   <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="post">
     <div class="mb-3">
-      <label for="restaurantName" class="form-label mt-1">餐廳名稱：</label>
+      <p>*為必填項目</p>
+      <label for="restaurantName" class="form-label mt-1">*餐廳名稱：</label>
       <input
         type="text"
         class="form-control"
@@ -24,7 +25,10 @@
         name="name_en"
         value="{{restaurant.name_en}}"
       />
-      <label for="restaurantCategory" class="form-label mt-3">餐廳分類：</label>
+      <label
+        for="restaurantCategory"
+        class="form-label mt-3"
+      >*餐廳分類：</label>
       <input
         type="text"
         class="form-control"
@@ -69,7 +73,7 @@
         placeholder="請貼上Google map的位置連結"
         value="{{restaurant.google_map}}"
       />
-      <label for="restaurantRating" class="form-label mt-3">評分數：</label>
+      <label for="restaurantRating" class="form-label mt-3">*評分數：</label>
       <input
         type="number"
         min="1"
