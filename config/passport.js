@@ -1,6 +1,7 @@
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const facebookStrategy = require("passport-facebook").Strategy;
+const googleStrategy = require("passport-google-oauth20").Strategy;
 const userDB = require("../models/userDB");
 const bcrypt = require("bcryptjs");
 const { randomPassword } = require("../app/randomPassword");
@@ -28,8 +29,34 @@ module.exports = (app) => {
     })
   );
 
+  //* 驗證 GOOGLE的登入
+  passport.use(
+    new googleStrategy(
+      {
+        clientID: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        callbackURL: process.env.GOOGLE_CB_URI,
+        profileFields: ["email", "displayName"],
+      },
+      (accessToken, refreshToken, profile, done) => {
+        const { email, name } = profile._json;
+        userDB.findOne({ email }).then((user) => {
+          if (user) return done(null, user);
+          const password = randomPassword();
+          bcrypt
+            .genSalt(10)
+            .then((salt) => bcrypt.hash(password, salt))
+            .then((hash) => {
+              userDB
+                .create({ name, email, password: hash })
+                .then((user) => done(null, user))
+                .catch((err) => done(err, null));
+            });
+        });
+      }
+    )
+  );
   //* 設定FB的驗證策略
-
   passport.use(
     new facebookStrategy(
       {
