@@ -18,11 +18,11 @@ module.exports = (app) => {
         .findOne({ email })
         .then((user) => {
           if (!user) {
-            return done(false, null, { message: "該帳號不存在" });
+            return done(null, false, { message: "該帳號不存在" });
           }
           bcrypt.compare(password, user.password).then((isMatched) => {
             if (isMatched) return done(null, user);
-            return done(false, null, { message: "帳號或密碼錯誤！" });
+            return done(null, false, { message: "帳號或密碼錯誤！" });
           });
         })
         .catch((err) => done(err, null));
