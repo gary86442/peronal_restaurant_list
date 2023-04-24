@@ -4,9 +4,9 @@
 
 ## 專案畫面
 
-![image](https://github.com/gary86442/peronal_restaurant_list/blob/main/public/img/index.png)
+![image](https://github.com/gary86442/personal_restaurant_list/blob/main/public/img/index.png)
 
-![image](https://github.com/gary86442/peronal_restaurant_list/blob/main/public/img/login.png.png)
+![image](https://github.com/gary86442/personal_restaurant_list/blob/main/public/img/login.png)
 
 ## 功能列表
 
@@ -22,18 +22,18 @@
 1. 打開你的 terminal，Clone 此專案至本機電腦
 
 ```
-git clone https://github.com/gary86442/peronal_restaurant_list.git
+git clone https://github.com/gary86442/personal_restaurant_list.git
 ```
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
 
 ```
-cd restaurantList
+cd personal_restaurant_list
 ```
 
 3. 安裝 npm 套件
 
-> 在 Terminal 輸入
+在 Terminal 輸入
 
 ```
  npm install
@@ -41,24 +41,22 @@ cd restaurantList
 
 4. 填寫環境變數
 
-> 在資料夾中，找到.env.example，其中變數套用個人之變數。
+在資料夾中，找到.env.example，其中變數套用個人之變數。
 
 5. 匯入種子檔案
 
-> 在 Terminal 執行 Seeder.js 檔案
+在 Terminal 執行 Seeder.js 檔案， 匯入使用者與餐廳資料
 
 ```
 
-執行 npm run seed 匯入使用者與餐廳資料
+npm run seed
 ```
 
-> 當 terminal 出現以下字樣，即表示種子資料已新增至資料庫。
+當 terminal 出現以下字樣，即表示種子資料已新增至資料庫。
 
-```
-Mongodb is connected!
+> Mongodb is connected!
 
-seeder done!!
-```
+> seeder done!!
 
 6. 啟動伺服器，執行 app.js 檔案
 
@@ -68,13 +66,16 @@ npm run start
 
 7. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
 
-```
-The Express server is running on http://localhost:3000
+> The Express server is running on http://localhost:3000
 
-Mongodb is connected!
-```
+> Mongodb is connected!
 
 現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始使用。
+
+8. 以測試帳號或註冊帳號來使用網站，
+
+> 帳號：user1@example.com
+> 密碼：12345678
 
 ## 使用套件及工具
 
