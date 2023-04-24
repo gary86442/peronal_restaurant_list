@@ -21,7 +21,7 @@ app.use(method_override("_method"));
 app.use(flash());
 app.use(
   session({
-    secret: "mysecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })

@@ -26,7 +26,7 @@
                 class="d-inline-block align-top"
                 alt="我的餐廳清單"
               />
-              我的餐廳清單
+              {{#if userName}}{{userName}}{{else}}我{{/if}}的餐廳清單
             </a>
             {{#if isAuthenticated}}
               <div class="btn col-2">
