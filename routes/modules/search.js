@@ -4,23 +4,20 @@ const restaurantDB = require("../../models/restaurantDB");
 
 router.get("/", (req, res) => {
   const userId = res.locals.user._id;
-  const keyword = req.query.keyword.trim().toLowerCase();
+  //* 利用正規表達式的方式改寫搜尋條件
+  const keyword = req.query.keyword.trim();
+  const regex = new RegExp(keyword, "gi");
+
   if (!keyword || !keyword.length) {
     return res.redirect("/");
   }
   restaurantDB
-    .find({ userId })
+    .find({
+      userId,
+      $or: [{ name: regex }, { name_en: regex }, { category: regex }],
+    })
     .lean()
-    .then((restaurants) => {
-      const filteredList = restaurants.filter(
-        (restaurant) =>
-          restaurant.name.toLowerCase().includes(keyword) ||
-          restaurant.name_en.toLowerCase().includes(keyword) ||
-          restaurant.category.toLowerCase().includes(keyword)
-      );
-
-      res.render("index", { restaurants: filteredList, keyword });
-    });
+    .then((restaurants) => res.render("index", { restaurants, keyword }));
 });
 
 module.exports = router;
